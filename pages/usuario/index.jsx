@@ -28,7 +28,7 @@ export default function usuario() {
     if (pagina === 1) {
       return <AlterarSenha setPagina={setPagina} />;
     } else if (pagina === 2) {      
-      return <TelaSucesso mensagemDeTela="Senha Alterada Com Sucesso!" />;
+      return <TelaSucesso mensagemDeTela="Senha Alterada Com Sucesso!" botaoSair="sair"/>;
     }
   };
 

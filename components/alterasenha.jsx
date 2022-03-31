@@ -35,7 +35,7 @@ export default function AlterarSenha({ setPagina }) {
     onSubmit: async (values) => {
       try {
         await Axios.post(
-          process.env.urlAPI + "/alterarsenha",
+          process.env.NEXT_PUBLIC_BACKEND_IP + "/alterarsenha",
           {
             senhaatual: values.senhaatual,
             novasenha: values.novasenha,
@@ -45,8 +45,7 @@ export default function AlterarSenha({ setPagina }) {
             withCredentials: true,
           }
         );
-        //Se Deu tudo Certo
-        console.log("Ola");
+        //Se Deu tudo Certo        
         setPagina(2);
       } catch (err) {
         console.log(err);

@@ -24,7 +24,7 @@ export default function PassoUm({ dadosParaEnvio, setDadosParaEnvio, setPagina }
     validationSchema: passoUmSchema,
     onSubmit: async (values) => {
       try {
-        await Axios.post(process.env.urlAPI + "/passoum", {
+        await Axios.post(process.env.NEXT_PUBLIC_BACKEND_IP + "/passoum", {
           login: values.login,
           matricula: values.matricula,
           cpf: values.cpf,

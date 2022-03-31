@@ -26,8 +26,7 @@ export default function PassoDois({ dadosParaEnvio, setPagina }) {
       celular: false,
     },
     validationSchema: passoDoisSchema,
-    onSubmit: async (values) => {
-      console.log(values);
+    onSubmit: async (values) => {      
       setPagina(3);
     },
   });

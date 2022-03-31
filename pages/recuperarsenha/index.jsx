@@ -23,7 +23,7 @@ export default function RecuperarSenha() {
     } else if (pagina === 2) {
       return <PassoDois dadosParaEnvio={dadosParaEnvio} setPagina={setPagina} />;
     } else if (pagina === 3) {      
-      return <TelaSucesso mensagemDeTela="Senha alterada com sucesso e logo será enviada a você!" />;
+      return <TelaSucesso mensagemDeTela="Senha alterada com sucesso e logo será enviada a você!" botaoSair="link" />;
     }
   };
 
