@@ -34,8 +34,7 @@ export default function LoginPage() {
     onSubmit: async (values) => {
       try {
         const data = new FormData(document.getElementById("form"));
-        const usuario = await Axios.post(
-          "http://127.0.0.1:8000/login",
+        const usuario = await Axios.post(process.env.NEXT_PUBLIC_BACKEND_IP + "/login",
           {
             login: data.get("login"),
             password: data.get("password"),

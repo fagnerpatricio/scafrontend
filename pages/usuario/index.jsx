@@ -13,7 +13,7 @@ export default function usuario() {
 
   useEffect(async () => {
     try {
-      await Axios.get(process.env.urlAPI + "/usuario", {
+      await Axios.get(process.env.NEXT_PUBLIC_BACKEND_IP + "/usuario", {
         withCredentials: true,
       });
       //Se Deu tudo Certo
