@@ -1,0 +1,44 @@
+#sucesso {
+  @apply flex text-center bg-green-300 max-w-sm mb-4;
+}
+
+#sucesso aside {
+  @apply w-20 bg-green-500;
+}
+
+#sucesso span {
+  @apply w-auto items-center p-4 text-left;
+}
+
+#sucesso b {
+  @apply text-lg font-bold pb-4 text-left;
+}
+
+.shieldCheckIcon {
+  @apply w-20 h-20 p-4 text-white;
+}
+
+#erro {
+  @apply flex bg-red-300 max-w-sm mb-4;
+}
+
+#erro aside {
+  @apply w-20 bg-red-500;
+}
+
+#erro span {
+  @apply w-auto text-black opacity-75 items-center p-4;
+}
+
+#erro b {
+  @apply text-lg font-bold pb-4;
+}
+
+.xCircleIcon {
+  @apply w-20 h-20 p-4 text-white;
+}
+
+#sucesso p,
+#erro p {
+  @apply leading-tight;
+}

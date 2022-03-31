@@ -1,0 +1,43 @@
+.passoUmBody {
+  @apply flex items-center justify-center min-h-screen bg-slate-100;
+}
+
+.passoUmBox {
+  @apply w-full max-w-lg px-10 py-8 mx-auto bg-white shadow-xl;
+}
+
+.embrulhoFormPassoUm {
+  @apply max-w-md mx-auto space-y-6;
+}
+
+.embrulhoFormPassoUm h2 {
+  @apply text-2xl font-bold text-center;
+}
+
+.embrulhoFormPassoUm p {
+  @apply my-4 opacity-70;
+}
+
+.embrulhoFormPassoUm hr {
+  @apply my-6;
+}
+
+.embrulhoFormPassoUmRodape {
+  @apply flex items-center justify-between mt-8;
+}
+
+.botaoTelaLogin {
+  @apply flex items-center text-gray-700 text-sm font-medium rounded;
+}
+
+.setaBotaoTelaLogin {
+  @apply h-5 w-5 mr-2;
+}
+
+.botaoContinuar {
+  @apply flex items-center px-3 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-500 focus:outline-none focus:bg-blue-500;
+}
+
+.setaBotaoContinuar {
+  @apply h-5 w-5 ml-2;
+}

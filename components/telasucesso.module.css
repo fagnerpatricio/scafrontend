@@ -1,0 +1,39 @@
+.body {
+  @apply flex items-center justify-center min-h-screen bg-slate-100;
+}
+
+.box {
+  @apply w-full max-w-sm px-10 py-8 mx-auto bg-gradient-to-b from-green-400 to-blue-500 rounded-2xl shadow-2xl;
+}
+
+.keyicon {
+  @apply w-24 h-24 text-white m-auto font-bold;
+}
+
+.arrownarrowlefticon {
+  @apply h-5 w-5 mr-2;
+}
+
+.embrulho {
+  @apply m-auto w-full text-center mt-3;
+}
+
+.embrulho span {
+  @apply text-4xl font-bold text-white;
+}
+
+.embrulho hr {
+  @apply my-6;
+}
+
+.embrulho p {
+  @apply  my-4 opacity-70 font-bold text-xl text-white;
+}
+
+.botao {
+  @apply flex bg-white rounded-full font-bold px-4 py-3 shadow-2xl;
+}
+
+.botaoitens {
+  @apply m-auto flex;
+}

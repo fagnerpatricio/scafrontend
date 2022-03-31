@@ -1,0 +1,70 @@
+.body {
+  @apply flex items-center justify-center min-h-screen bg-slate-100;
+}
+
+.box {
+  @apply w-full max-w-3xl px-10 py-8 mx-auto bg-white shadow-xl;
+}
+
+.embrulho {
+  @apply max-w-3xl mx-auto space-y-6;
+}
+
+.embrulho h2 {
+  @apply text-2xl font-bold text-center;
+}
+
+.embrulho hr {
+  @apply my-6;
+}
+
+.embrulhoEscolhas {
+  @apply flex items-center justify-between;
+}
+
+.celular {
+  @apply flex items-start;
+}
+
+.celularRotulo,
+.emailRotulo {
+  @apply text-sm ml-3;
+}
+
+.celularRotulo label,
+.emailRotulo label {
+  @apply font-medium text-gray-900;
+}
+
+.email {
+  @apply flex items-end;
+}
+
+.email input,
+.celular input {
+  @apply h-4 w-4;
+}
+
+.rodape {
+  @apply flex items-center justify-between mt-8;
+}
+
+.telalogin {
+  @apply flex items-center text-gray-700 text-sm font-medium rounded;
+}
+
+.arrowNarrowLeftIcon {
+  @apply h-5 w-5 mr-2;
+}
+
+.continuar {
+  @apply flex items-center px-3 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-500 focus:outline-none focus:bg-blue-500;
+}
+
+.arrowNarrowRightIcon {
+  @apply h-5 w-5 ml-2;
+}
+
+.alerta {
+  @apply text-red-500 font-bold;
+}
