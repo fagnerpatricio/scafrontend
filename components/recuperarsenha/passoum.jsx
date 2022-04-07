@@ -1,3 +1,4 @@
+import { useState } from "react";
 import * as Yup from "yup";
 import Axios from "axios";
 import Link from "next/link";
@@ -7,8 +8,10 @@ import { ArrowNarrowLeftIcon } from "@heroicons/react/solid";
 import Cabecalho from "../cabecalho";
 import styles from "./passoum.module.css";
 import Input from "../input";
+import Alerta from "../alerta";
 
-export default function PassoUm({ dadosParaEnvio, setDadosParaEnvio, setPagina }) {
+export default function PassoUm({ emailParaEnvio, setEmailParaEnvio, setPagina }) {
+  const [falhaLogin, setfalhaLogin] = useState(false);
   const passoUmSchema = Yup.object().shape({
     login: Yup.string().required("* Campo Obrigatório"),
     matricula: Yup.string().required("* Campo Obrigatório"),
@@ -24,20 +27,23 @@ export default function PassoUm({ dadosParaEnvio, setDadosParaEnvio, setPagina }
     validationSchema: passoUmSchema,
     onSubmit: async (values) => {
       try {
-        await Axios.post(process.env.NEXT_PUBLIC_BACKEND_IP + "/passoum", {
+        const dados = await Axios.post(process.env.NEXT_PUBLIC_BACKEND_IP + "/passoum", {
           login: values.login,
           matricula: values.matricula,
           cpf: values.cpf,
-        }).then((res) => {
-          setPagina(2);
-          setDadosParaEnvio({
-            ...dadosParaEnvio,
-            celular: res.data.celular,
-            email: res.data.email,
-          });
         });
+
+        if (dados.status === 200) {
+          setPagina(2);
+          setEmailParaEnvio(dados.data);
+        }
+
+        if (dados.status === 204) {          
+          setPagina(4);          
+        }
+        
       } catch (err) {
-        console.log(err);
+        setfalhaLogin(true);
       }
     },
   });
@@ -46,6 +52,12 @@ export default function PassoUm({ dadosParaEnvio, setDadosParaEnvio, setPagina }
     <div>
       <Cabecalho />
       <div className={styles.passoUmBody}>
+        <div className={`${falhaLogin ? "" : "hidden"}`}>
+          <Alerta
+            tipo="erro"
+            mensagem="Não encontramos nenhum usuário com os dados informados, revise e tente novamente!"
+          />
+        </div>
         <div className={styles.passoUmBox}>
           <div className={styles.embrulhoFormPassoUm}>
             <form action="" id="form" onSubmit={formik.handleSubmit}>
@@ -60,7 +72,7 @@ export default function PassoUm({ dadosParaEnvio, setDadosParaEnvio, setPagina }
                 value={formik.values.login}
                 onChange={formik.handleChange}
                 touched={formik.touched.login}
-                erro={formik.errors.login}                
+                erro={formik.errors.login}
               />
               <Input
                 label="Mátricula: Apenas os Números"
@@ -70,7 +82,7 @@ export default function PassoUm({ dadosParaEnvio, setDadosParaEnvio, setPagina }
                 value={formik.values.matricula}
                 onChange={formik.handleChange}
                 touched={formik.touched.matricula}
-                erro={formik.errors.matricula}                
+                erro={formik.errors.matricula}
               />
               <Input
                 label="CPF: Apenas os Números"
@@ -80,8 +92,8 @@ export default function PassoUm({ dadosParaEnvio, setDadosParaEnvio, setPagina }
                 value={formik.values.cpf}
                 onChange={formik.handleChange}
                 touched={formik.touched.cpf}
-                erro={formik.errors.cpf}                
-              />              
+                erro={formik.errors.cpf}
+              />
               <div className={styles.embrulhoFormPassoUmRodape}>
                 <button className={styles.botaoTelaLogin}>
                   <ArrowNarrowLeftIcon className={styles.setaBotaoTelaLogin} />

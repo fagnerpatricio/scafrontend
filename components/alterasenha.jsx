@@ -6,10 +6,12 @@ import Cabecalho from "./cabecalho";
 import css from "./alterasenha.module.css";
 import Input from "./input";
 import { ArrowCircleRightIcon } from "@heroicons/react/outline";
+import Alerta from "./alerta";
 
 export default function AlterarSenha({ setPagina }) {
   const [sucessoalterarSenha, setsucessoAlterarSenha] = useState(false);
   const [falhaAlterarSenha, setfalhaAlterarSenha] = useState(false);
+  const [falhaLogin, setfalhaLogin] = useState(false);
 
   const alterarSenhaSchema = Yup.object().shape({
     senhaatual: Yup.string().required("* Campo Obrigatório"),
@@ -44,9 +46,13 @@ export default function AlterarSenha({ setPagina }) {
           {
             withCredentials: true,
           }
-        );
-        //Se Deu tudo Certo        
-        setPagina(2);
+        ).then(function (response) {
+          if (response.data) {
+            setPagina(2);
+          }
+          setfalhaLogin(true)
+          console.log(response.data);
+        });
       } catch (err) {
         console.log(err);
       }
@@ -55,7 +61,10 @@ export default function AlterarSenha({ setPagina }) {
 
   return (
     <div id={css["componente"]}>
-      <Cabecalho />
+      <Cabecalho />      
+      <div className={`${falhaLogin ? "" : "hidden"}`}>
+        <Alerta tipo="erro" mensagem="Sua Senha Atual Não Confere" />
+      </div>
       <div id={css["box"]}>
         <form id="form" onSubmit={formik.handleSubmit}>
           <h2>Alteração de Senha</h2>
@@ -97,6 +106,6 @@ export default function AlterarSenha({ setPagina }) {
           </button>
         </form>
       </div>
-    </div>   
+    </div>
   );
 }

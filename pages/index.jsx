@@ -34,7 +34,8 @@ export default function LoginPage() {
     onSubmit: async (values) => {
       try {
         const data = new FormData(document.getElementById("form"));
-        const usuario = await Axios.post(process.env.NEXT_PUBLIC_BACKEND_IP + "/login",
+        const usuario = await Axios.post(
+          process.env.NEXT_PUBLIC_BACKEND_IP + "/login",
           {
             login: data.get("login"),
             password: data.get("password"),
@@ -56,44 +57,38 @@ export default function LoginPage() {
       <Cabecalho />
       <div id={css["pagina"]}>
         <div className={`${falhaLogin ? "" : "hidden"}`}>
-          <Alerta
-            tipo="erro"
-            mensagem="Usuário não encontrado, digite novamente seu login e senha"
-          />
+          <Alerta tipo="erro" mensagem="Usuário não encontrado, digite novamente seu login e senha" />
         </div>
-
         <div id={css["box"]}>
           <img src="imagens/undraw_login_re_4vu2.svg" alt="" />
           <h1>SCA - Sistema de Controle de Acesso</h1>
           <p>Entre com seu login e senha para ter acesso</p>
 
           <form action="" id="form" onSubmit={formik.handleSubmit}>
-            <fieldset>
-              <Input
-                label="Login"
-                name="login"
-                type="text"
-                placeholder="Ex: joão.silva"
-                value={formik.values.login}
-                onChange={formik.handleChange}
-                touched={formik.touched.login}
-                erro={formik.errors.login}
-              />
-              <Input
-                label="Senha"
-                name="password"
-                type="password"
-                placeholder="Ex: b2HSBcMh$53eEz"
-                value={formik.values.password}
-                onChange={formik.handleChange}
-                touched={formik.touched.password}
-                erro={formik.errors.password}
-              />
-              <button type="submit">
-                <span>Autenticar</span>
-                <ArrowCircleRightIcon className={css.buttonIcon} />
-              </button>
-            </fieldset>
+            <Input
+              label="Login"
+              name="login"
+              type="text"
+              placeholder="Ex: joão.silva"
+              value={formik.values.login}
+              onChange={formik.handleChange}
+              touched={formik.touched.login}
+              erro={formik.errors.login}
+            />
+            <Input
+              label="Senha"
+              name="password"
+              type="password"
+              placeholder="Ex: b2HSBcMh$53eEz"
+              value={formik.values.password}
+              onChange={formik.handleChange}
+              touched={formik.touched.password}
+              erro={formik.errors.password}
+            />            
+            <button type="submit">
+              <span>Autenticar</span>
+              <ArrowCircleRightIcon className={css.buttonIcon} />
+            </button>
           </form>
         </div>
 

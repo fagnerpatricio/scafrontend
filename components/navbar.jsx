@@ -19,11 +19,11 @@ export default function Navbar() {
     <nav id={css["nav"]}>
       <div id={css["wrapper"]}>
         <div>
-          <GlobeAltIcon className={css.globeAltIcon} />
+          <GlobeAltIcon />
           <h1>SCA - Sistema de Controle de Acesso</h1>
         </div>
         <button onClick={sair}>
-          <ArrowCircleLeftIcon className={css.arrowCircleLeftIcon} />
+          <ArrowCircleLeftIcon />
           <span>sair</span>
         </button>
       </div>

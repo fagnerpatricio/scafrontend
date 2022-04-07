@@ -22,10 +22,10 @@
   @apply ml-2 uppercase font-bold;
 }
 
-.globeAltIcon {
+#nav svg:first-child {
   @apply w-10 h-10 pr-2 text-gray-600;
 }
 
-.arrowCircleLeftIcon {
-  @apply h-5 w-5;
+#nav button svg:first-child {
+  @apply h-5 w-5 p-0 m-0 text-white;
 }
