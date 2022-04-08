@@ -1,10 +1,10 @@
 import css from "./input.module.css";
 
-
 export default function Input(props) {
   return (
-    <div className={css.corpoComponente}>
-      <label>{props.label}</label>      
+    // "c" = componente
+    <div id={css["c"]}>
+      <label>{props.label}</label>
       <input
         name={props.name}
         type={props.type}

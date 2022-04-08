@@ -1,16 +1,14 @@
-import { useState } from "react";
 import * as Yup from "yup";
 import Axios from "axios";
+import { useState } from "react";
 import { useFormik } from "formik";
-import Cabecalho from "./cabecalho";
-import css from "./alterasenha.module.css";
-import Input from "./input";
 import { ArrowCircleRightIcon } from "@heroicons/react/outline";
+import Cabecalho from "./cabecalho";
+import Input from "./input";
 import Alerta from "./alerta";
+import css from "./alterasenha.module.css";
 
 export default function AlterarSenha({ setPagina }) {
-  const [sucessoalterarSenha, setsucessoAlterarSenha] = useState(false);
-  const [falhaAlterarSenha, setfalhaAlterarSenha] = useState(false);
   const [falhaLogin, setfalhaLogin] = useState(false);
 
   const alterarSenhaSchema = Yup.object().shape({
@@ -50,7 +48,7 @@ export default function AlterarSenha({ setPagina }) {
           if (response.data) {
             setPagina(2);
           }
-          setfalhaLogin(true)
+          setfalhaLogin(true);
           console.log(response.data);
         });
       } catch (err) {
@@ -60,52 +58,54 @@ export default function AlterarSenha({ setPagina }) {
   });
 
   return (
-    <div id={css["componente"]}>
-      <Cabecalho />      
+    <div id={css["pagina"]}>
+      <Cabecalho />
+
+      {/* Mensagem de Erro */}
       <div className={`${falhaLogin ? "" : "hidden"}`}>
         <Alerta tipo="erro" mensagem="Sua Senha Atual Não Confere" />
       </div>
-      <div id={css["box"]}>
-        <form id="form" onSubmit={formik.handleSubmit}>
-          <h2>Alteração de Senha</h2>
-          <p>Informe os dados abaixo para continuar</p>
-          <hr />
-          <Input
-            label="Senha Atual"
-            name="senhaatual"
-            type="password"
-            placeholder="Ex: 12345678"
-            value={formik.values.senhaatual}
-            onChange={formik.handleChange}
-            touched={formik.touched.senhaatual}
-            erro={formik.errors.senhaatual}
-          />
-          <Input
-            label="Nova Senha"
-            name="novasenha"
-            type="password"
-            placeholder="Ex: as7%*2M&N%E#8Q"
-            value={formik.values.novasenha}
-            onChange={formik.handleChange}
-            touched={formik.touched.novasenha}
-            erro={formik.errors.novasenha}
-          />
-          <Input
-            label="Confirmar Nova Senha"
-            name="confirmasenha"
-            type="password"
-            placeholder="Ex: as7%*2M&N%E#8Q"
-            value={formik.values.confirmasenha}
-            onChange={formik.handleChange}
-            touched={formik.touched.confirmasenha}
-            erro={formik.errors.confirmasenha}
-          />
-          <button type="submit">
-            <span>Enviar Solicitação</span>
-            <ArrowCircleRightIcon className={css.buttonIcon} />
-          </button>
-        </form>
-      </div>
+      {/* Fim da Menssagem de Erro */}
+
+      <form id="form" onSubmit={formik.handleSubmit}>
+        <h2>Alteração de Senha</h2>
+        <p>Informe os dados abaixo para continuar</p>
+        <hr />
+        <Input
+          label="Senha Atual"
+          name="senhaatual"
+          type="password"
+          placeholder="Ex: 12345678"
+          value={formik.values.senhaatual}
+          onChange={formik.handleChange}
+          touched={formik.touched.senhaatual}
+          erro={formik.errors.senhaatual}
+        />
+        <Input
+          label="Nova Senha"
+          name="novasenha"
+          type="password"
+          placeholder="Ex: as7%*2M&N%E#8Q"
+          value={formik.values.novasenha}
+          onChange={formik.handleChange}
+          touched={formik.touched.novasenha}
+          erro={formik.errors.novasenha}
+        />
+        <Input
+          label="Confirmar Nova Senha"
+          name="confirmasenha"
+          type="password"
+          placeholder="Ex: as7%*2M&N%E#8Q"
+          value={formik.values.confirmasenha}
+          onChange={formik.handleChange}
+          touched={formik.touched.confirmasenha}
+          erro={formik.errors.confirmasenha}
+        />
+        <button type="submit">
+          <span>Enviar Solicitação</span>
+          <ArrowCircleRightIcon  />
+        </button>
+      </form>
     </div>
   );
 }

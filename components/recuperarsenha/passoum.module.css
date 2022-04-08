@@ -1,52 +1,43 @@
-.passoUmBody {
+#pagina {
   @apply flex flex-col items-center justify-center min-h-screen bg-slate-100;
 }
 
-.passoUmBox {
+#pagina section {
   @apply w-full max-w-lg px-10 py-8 mx-auto bg-white shadow-xl;
 }
 
-.embrulhoFormPassoUm {
+#pagina section form {
   @apply max-w-md mx-auto space-y-6;
 }
 
-.embrulhoFormPassoUm h2 {
+#pagina section form h2 {
   @apply text-2xl font-bold text-center;
 }
 
-.embrulhoFormPassoUm p {
+#pagina section form p {
   @apply my-4 opacity-70;
 }
 
-.embrulhoFormPassoUm hr {
+#pagina section form hr {
   @apply my-6;
 }
 
-.embrulhoFormPassoUmRodape {
+#pagina section form footer {
   @apply flex items-center justify-between mt-8;
 }
 
-.botaoTelaLogin {
+#pagina section form footer button:first-of-type {
   @apply flex items-center text-gray-700 text-sm font-medium rounded;
 }
 
-.embrulhoFormPassoUmRodape button svg:first-child {
+#pagina section form footer button svg:first-child {
   @apply h-5 w-5 mr-2;
 }
 
-.embrulhoFormPassoUmRodape button svg:last-child {
-  @apply h-5 w-5 ml-2;
-}
-
-/* 
-.setaBotaoTelaLogin {
-  @apply h-5 w-5 mr-2;
-} */
-
-.botaoContinuar {
+#pagina section form footer button:last-of-type {
   @apply flex items-center px-3 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-500 focus:outline-none focus:bg-blue-500;
 }
 
-/* .setaBotaoContinuar {
+#pagina section form footer button svg:last-child {
   @apply h-5 w-5 ml-2;
-} */
+}

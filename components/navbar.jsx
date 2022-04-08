@@ -17,16 +17,16 @@ export default function Navbar() {
 
   return (
     <nav id={css["nav"]}>
-      <div id={css["wrapper"]}>
-        <div>
+      <section>        
+        <header>
           <GlobeAltIcon />
           <h1>SCA - Sistema de Controle de Acesso</h1>
-        </div>
+        </header>
         <button onClick={sair}>
           <ArrowCircleLeftIcon />
           <span>sair</span>
         </button>
-      </div>
+      </section>
     </nav>
   );
 }

@@ -1,39 +1,35 @@
-.body {
+#c {
   @apply flex items-center justify-center min-h-screen bg-slate-100;
 }
 
-.box {
-  @apply w-full max-w-lg px-10 py-8 mx-auto bg-gradient-to-b from-yellow-400 to-orange-700 shadow-2xl;
+#c section {
+  @apply w-full max-w-lg px-10 py-8 mx-auto bg-white shadow-xl;
 }
 
-.keyicon {
-  @apply w-24 h-24 text-white m-auto font-bold;
+#c section header {
+  @apply m-auto w-full text-center;
 }
 
-.arrownarrowlefticon {
-  @apply h-5 w-5 mr-2;
+#c section header svg {
+  @apply w-24 h-24 m-auto font-bold;
 }
 
-.embrulho {
-  @apply m-auto w-full text-center mt-3;
+#c section header span {
+  @apply text-4xl font-bold;
 }
 
-.embrulho span {
-  @apply text-4xl font-bold text-white;
-}
-
-.embrulho hr {
+#c section hr {
   @apply my-6;
 }
 
-.embrulho p {
-  @apply  my-4 opacity-70 font-bold text-xl text-white;
+#c section p {
+  @apply my-4 text-center mb-10;
 }
 
-.botao {
-  @apply flex bg-white rounded-full font-bold px-4 py-3 mt-10 shadow-2xl;
+#c section button {
+  @apply flex py-2 bg-blue-400 rounded-full shadow-2xl min-w-full justify-center text-white;
 }
 
-.botaoitens {
-  @apply m-auto flex;
+#c section button svg {
+  @apply h-5 w-5 mr-2;
 }

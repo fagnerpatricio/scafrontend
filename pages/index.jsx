@@ -1,14 +1,14 @@
-import { useState } from "react";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import Axios from "axios";
-import { useFormik } from "formik";
 import * as Yup from "yup";
+import Link from "next/link";
+import Axios from "axios";
+import { useState } from "react";
+import { useRouter } from "next/router";
+import { useFormik } from "formik";
+import { ArrowCircleRightIcon } from "@heroicons/react/outline";
 import Cabecalho from "../components/cabecalho";
 import Alerta from "../components/alerta";
 import Input from "../components/input";
 import css from "./index.module.css";
-import { ArrowCircleRightIcon } from "@heroicons/react/outline";
 
 export default function LoginPage() {
   //
@@ -53,54 +53,55 @@ export default function LoginPage() {
   });
 
   return (
-    <div>
+    <div id={css["pagina"]}>
       <Cabecalho />
-      <div id={css["pagina"]}>
-        <div className={`${falhaLogin ? "" : "hidden"}`}>
-          <Alerta tipo="erro" mensagem="Usuário não encontrado, digite novamente seu login e senha" />
-        </div>
-        <div id={css["box"]}>
-          <img src="imagens/undraw_login_re_4vu2.svg" alt="" />
-          <h1>SCA - Sistema de Controle de Acesso</h1>
-          <p>Entre com seu login e senha para ter acesso</p>
 
-          <form action="" id="form" onSubmit={formik.handleSubmit}>
-            <Input
-              label="Login"
-              name="login"
-              type="text"
-              placeholder="Ex: joão.silva"
-              value={formik.values.login}
-              onChange={formik.handleChange}
-              touched={formik.touched.login}
-              erro={formik.errors.login}
-            />
-            <Input
-              label="Senha"
-              name="password"
-              type="password"
-              placeholder="Ex: b2HSBcMh$53eEz"
-              value={formik.values.password}
-              onChange={formik.handleChange}
-              touched={formik.touched.password}
-              erro={formik.errors.password}
-            />            
-            <button type="submit">
-              <span>Autenticar</span>
-              <ArrowCircleRightIcon className={css.buttonIcon} />
-            </button>
-          </form>
-        </div>
-
-        <footer>
-          <span>
-            Esqueceu a senha ou primeiro acesso?
-            <Link href="/recuperarsenha">
-              <a>Clique aqui</a>
-            </Link>
-          </span>
-        </footer>
+      {/* Mensagem de Erro */}
+      <div className={`${falhaLogin ? "" : "hidden"}`}>
+        <Alerta tipo="erro" mensagem="Usuário não encontrado, digite novamente seu login e senha" />
       </div>
+      {/* Fim da Mensagem de Erro */}
+
+      <section>
+        <img src="imagens/undraw_login_re_4vu2.svg" alt="" />
+        <header>SCA - Sistema de Controle de Acesso</header>
+        <p>Entre com seu login e senha para ter acesso</p>
+
+        <form action="" id="form" onSubmit={formik.handleSubmit}>
+          <Input
+            label="Login"
+            name="login"
+            type="text"
+            placeholder="Ex: joão.silva"
+            value={formik.values.login}
+            onChange={formik.handleChange}
+            touched={formik.touched.login}
+            erro={formik.errors.login}
+          />
+          <Input
+            label="Senha"
+            name="password"
+            type="password"
+            placeholder="Ex: b2HSBcMh$53eEz"
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            touched={formik.touched.password}
+            erro={formik.errors.password}
+          />
+          <button type="submit">
+            <span>Autenticar</span>
+            <ArrowCircleRightIcon />
+          </button>
+        </form>
+      </section>
+      <footer>
+        <span>
+          Esqueceu a senha ou primeiro acesso?
+          <Link href="/recuperarsenha">
+            <a>Clique aqui</a>
+          </Link>
+        </span>
+      </footer>
     </div>
   );
 }

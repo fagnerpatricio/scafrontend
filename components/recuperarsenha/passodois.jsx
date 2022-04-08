@@ -1,11 +1,10 @@
 // import React from "react";
-import Cabecalho from "../cabecalho";
+
 import Axios from "axios";
 import { useFormik } from "formik";
-
 import { ArrowNarrowRightIcon } from "@heroicons/react/solid";
 import { ArrowNarrowLeftIcon } from "@heroicons/react/solid";
-
+import Cabecalho from "../cabecalho";
 import css from "./passodois.module.css";
 
 export default function PassoDois({ emailParaEnvio, setPagina }) {
@@ -18,16 +17,17 @@ export default function PassoDois({ emailParaEnvio, setPagina }) {
         await Axios.post(process.env.NEXT_PUBLIC_BACKEND_IP + "/passodois", {
           email: emailParaEnvio,
         });
+        // Se tudo deu certo
+        setPagina(3);
       } catch (err) {
         console.log(err);
       }
-      setPagina(3);
     },
   });
   return (
     <div id={css["pagina"]}>
       <Cabecalho />
-      <div id={css["box"]}>
+      <section>
         <form action="" id="form" onSubmit={formik.handleSubmit}>
           <h2>Informações de Recuperação</h2>
           <hr />
@@ -56,7 +56,7 @@ export default function PassoDois({ emailParaEnvio, setPagina }) {
             </button>
           </div>
         </form>
-      </div>
+      </section>
     </div>
   );
 }
