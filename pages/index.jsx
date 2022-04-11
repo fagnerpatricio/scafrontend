@@ -9,6 +9,7 @@ import Cabecalho from "../components/cabecalho";
 import Alerta from "../components/alerta";
 import Input from "../components/input";
 import css from "./index.module.css";
+import Carregando from "../components/carregando";
 
 export default function LoginPage() {
   //
@@ -16,6 +17,7 @@ export default function LoginPage() {
   //
   const [falhaLogin, setfalhaLogin] = useState(false);
   const route = useRouter();
+  const [carregando, setCarregando] = useState(false);
 
   //
   // Funções
@@ -32,9 +34,10 @@ export default function LoginPage() {
     },
     validationSchema: loginSchema,
     onSubmit: async (values) => {
+      setCarregando(true);
       try {
         const data = new FormData(document.getElementById("form"));
-        const usuario = await Axios.post(
+        await Axios.post(
           process.env.NEXT_PUBLIC_BACKEND_IP + "/login",
           {
             login: data.get("login"),
@@ -44,13 +47,24 @@ export default function LoginPage() {
             withCredentials: true,
           }
         );
+        // setCarregando(false);
         // Se deu tudo certo
         route.push("/usuario");
       } catch (err) {
+        setCarregando(false);
         setfalhaLogin(true);
       }
     },
   });
+
+  // if (carregando) {
+  //   return (
+  //     <div>
+  //       <Cabecalho />        
+  //       <Carregando />        
+  //     </div>
+  //   );
+  // }
 
   return (
     <div id={css["pagina"]}>

@@ -1,0 +1,7 @@
+#pagina {
+	@apply flex flex-col items-center justify-center min-h-screen;
+}
+
+#pagina h2 {
+	@apply text-xl font-semibold;
+}

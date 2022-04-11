@@ -5,6 +5,7 @@ import Cabecalho from "../../components/cabecalho";
 import Navbar from "../../components/navbar";
 import AlterarSenha from "../../components/alterasenha";
 import TelaSucesso from "../../components/telasucesso";
+import Carregando from "../../components/carregando";
 
 export default function usuario() {
   const [pagina, setPagina] = useState(1);
@@ -27,8 +28,8 @@ export default function usuario() {
   const PageDisplay = () => {
     if (pagina === 1) {
       return <AlterarSenha setPagina={setPagina} />;
-    } else if (pagina === 2) {      
-      return <TelaSucesso mensagemDeTela="Senha Alterada Com Sucesso!" botaoSair="sair"/>;
+    } else if (pagina === 2) {
+      return <TelaSucesso mensagemDeTela="Senha Alterada Com Sucesso!" botaoSair="sair" />;
     }
   };
 
@@ -36,7 +37,8 @@ export default function usuario() {
     return (
       <div>
         <Cabecalho />
-        <h1>Carreando</h1>
+        <Carregando />
+        
       </div>
     );
   }

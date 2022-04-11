@@ -1,0 +1,35 @@
+#c {
+  @apply flex items-center justify-center min-h-screen bg-slate-100;
+}
+
+#c section {
+  @apply w-full max-w-lg px-10 py-8 mx-auto bg-white shadow-xl;
+}
+
+#c section header {
+  @apply m-auto w-full text-center;
+}
+
+#c section header svg {
+  @apply w-24 h-24 m-auto font-bold;
+}
+
+#c section header span {
+  @apply text-4xl font-bold;
+}
+
+#c section hr {
+  @apply my-6;
+}
+
+#c section p {
+  @apply my-4 text-center mb-10;
+}
+
+#c section button {
+  @apply flex py-2 bg-blue-400 rounded-full shadow-2xl min-w-full justify-center text-white font-bold;
+}
+
+#c section button svg {
+  @apply h-5 w-5 mr-2;
+}

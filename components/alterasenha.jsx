@@ -7,9 +7,11 @@ import Cabecalho from "./cabecalho";
 import Input from "./input";
 import Alerta from "./alerta";
 import css from "./alterasenha.module.css";
+import Carregando from "./carregando";
 
 export default function AlterarSenha({ setPagina }) {
   const [falhaLogin, setfalhaLogin] = useState(false);
+  const [carreando, setCarregando] = useState(false);
 
   const alterarSenhaSchema = Yup.object().shape({
     senhaatual: Yup.string().required("* Campo Obrigatório"),
@@ -33,6 +35,7 @@ export default function AlterarSenha({ setPagina }) {
     },
     validationSchema: alterarSenhaSchema,
     onSubmit: async (values) => {
+      setCarregando(true)
       try {
         await Axios.post(
           process.env.NEXT_PUBLIC_BACKEND_IP + "/alterarsenha",
@@ -56,6 +59,15 @@ export default function AlterarSenha({ setPagina }) {
       }
     },
   });
+
+  if (carreando) {
+    return (
+      <div>
+        <Cabecalho />
+        <Carregando />        
+      </div>
+    );
+  }
 
   return (
     <div id={css["pagina"]}>

@@ -9,9 +9,11 @@ import Cabecalho from "../cabecalho";
 import css from "./passoum.module.css";
 import Input from "../input";
 import Alerta from "../alerta";
+import Carregando from "../carregando";
 
-export default function PassoUm({ emailParaEnvio, setEmailParaEnvio, setPagina }) {
+export default function PassoUm({setLoginUsuario, setEmailParaEnvio, setPagina }) {
   const [falhaLogin, setfalhaLogin] = useState(false);
+  const [carregando, setCarregando] = useState(false);
 
   const passoUmSchema = Yup.object().shape({
     login: Yup.string().required("* Campo Obrigatório"),
@@ -27,6 +29,7 @@ export default function PassoUm({ emailParaEnvio, setEmailParaEnvio, setPagina }
     },
     validationSchema: passoUmSchema,
     onSubmit: async (values) => {
+      setCarregando(true);
       try {
         const dados = await Axios.post(process.env.NEXT_PUBLIC_BACKEND_IP + "/passoum", {
           login: values.login,
@@ -34,17 +37,28 @@ export default function PassoUm({ emailParaEnvio, setEmailParaEnvio, setPagina }
           cpf: values.cpf,
         });
         if (dados.status === 200) {
-          setPagina(2);
+          setPagina(2);                  
           setEmailParaEnvio(dados.data);
+          setLoginUsuario(values.login);
         }
         if (dados.status === 204) {
           setPagina(4);
         }
       } catch (err) {
+        setCarregando(false);
         setfalhaLogin(true);
       }
     },
   });
+
+  if (carregando) {
+    return (
+      <div>
+        <Cabecalho />        
+        <Carregando />        
+      </div>
+    );
+  }
 
   return (
     <div id={css["pagina"]}>
